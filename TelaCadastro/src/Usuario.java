@@ -15,15 +15,20 @@ import javax.swing.ImageIcon;
 public class Usuario extends JFrame{
 
 	JFrame tela = new JFrame("Cadastro de Pessoas");
+	
 	JButton botao1 = new JButton("Confirmar");
 	JButton botao2 = new JButton("Cancelar");
+	
 	JComboBox selecaoSalario = new JComboBox();
+	
 	JRadioButton m = new JRadioButton("MASCULINO");
 	JRadioButton f = new JRadioButton("FEMININO");
+	
 	JTextField tfnome = new JTextField();
 	JTextField tffone = new JTextField();
 	JTextField tfemail = new JTextField();
 	JTextField tfcpf = new JTextField();
+	
 	JLabel lbNome = new JLabel("NOME: ");
 	JLabel lbCpf = new JLabel("CPF: ");
 	JLabel lbSexo = new JLabel("SEXO: ");
@@ -36,10 +41,7 @@ public class Usuario extends JFrame{
 	JLabel label = new JLabel(image);
 	
 	public Usuario() {
-		
-		//tela.add(label);
-		//label.setBounds(05, 90, 30, 50);
-		
+				
 		tela.setSize(370,500);
 		tela.setVisible(true);
 		tela.setLayout(null);
@@ -81,9 +83,9 @@ public class Usuario extends JFrame{
 		sal.setBounds(15, 350, 200, 50);
 		tela.getContentPane().add(selecaoSalario);
 		selecaoSalario.setBounds(140, 365, 130, 25);
-		selecaoSalario.addItem("1 a 3 Sal·rios");
-		selecaoSalario.addItem("3 a 5 Sal·rios");
-		selecaoSalario.addItem("Acima de 5 Sal·rios");
+		selecaoSalario.addItem("1 a 3 Sal√°rios");
+		selecaoSalario.addItem("3 a 5 Sal√°rios");
+		selecaoSalario.addItem("Acima de 5 Sal√°rios");
 		
 		tela.getContentPane().add(botao1);  // botao confirmar 
 		botao1.setBounds(80, 420, 110, 18);
