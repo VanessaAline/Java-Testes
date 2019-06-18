@@ -14,21 +14,22 @@ import javax.swing.ImageIcon;
 
 public class Usuario extends JFrame{
 
+	//frame\\
 	JFrame tela = new JFrame("Cadastro de Pessoas");
-	
+	//botoes\\
 	JButton botao1 = new JButton("Confirmar");
 	JButton botao2 = new JButton("Cancelar");
-	
+	//comboBox\\
 	JComboBox selecaoSalario = new JComboBox();
-	
+	//JRadio\\
 	JRadioButton m = new JRadioButton("MASCULINO");
 	JRadioButton f = new JRadioButton("FEMININO");
-	
+	//Textfield\\
 	JTextField tfnome = new JTextField();
 	JTextField tffone = new JTextField();
 	JTextField tfemail = new JTextField();
 	JTextField tfcpf = new JTextField();
-	
+	//Labels\\
 	JLabel lbNome = new JLabel("NOME: ");
 	JLabel lbCpf = new JLabel("CPF: ");
 	JLabel lbSexo = new JLabel("SEXO: ");
@@ -36,18 +37,21 @@ public class Usuario extends JFrame{
 	JLabel lbEmail = new JLabel("E-MAIL: ");
 	JLabel inicio = new JLabel("Cadastro de Pessoas");
 	JLabel sal = new JLabel("FAIXA SALARIAL: ");
+	JLabel label = new JLabel(new ImageIcon(getClass().getResource("icone_verde.png")));
 	
-	ImageIcon image = new ImageIcon(getClass().getResource("icone_verde.png"));
-	JLabel label = new JLabel(image);
-	
+	//Construtor\\
 	public Usuario() {
 				
+		//Configurações da Tela\\
 		tela.setSize(370,500);
 		tela.setVisible(true);
 		tela.setLayout(null);
 		tela.setResizable(false);
-		tela.setDefaultCloseOperation(EXIT_ON_CLOSE);   //fechar aplicacao
+		tela.setDefaultCloseOperation(EXIT_ON_CLOSE); 
 		
+		tela.getContentPane().add(label); 
+		label.setBounds(20, 30, 132, 138);
+				
 		tela.getContentPane().add(inicio);
 		inicio.setFont(new Font("Tahoma", Font.BOLD,16)); //alterando a fonte 
 		inicio.setBounds(170, 95, 180, 20);
@@ -125,3 +129,4 @@ public class Usuario extends JFrame{
 	}
 
 }
+
