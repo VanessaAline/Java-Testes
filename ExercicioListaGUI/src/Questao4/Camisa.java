@@ -69,7 +69,7 @@ public class Camisa extends JFrame{
 		
 		tela.getContentPane().add(lbtamanho);
 		lbtamanho.setBounds(45,150,250,30);
-	    lbtamanho.setFont(new Font("Tahoma", 1, 12));
+	    	lbtamanho.setFont(new Font("Tahoma", 1, 12));
 	    
 		tela.getContentPane().add(lbcor);
 		lbcor.setBounds(45,240,250,30);
