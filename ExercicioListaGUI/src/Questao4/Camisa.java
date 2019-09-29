@@ -5,15 +5,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
 
@@ -22,7 +24,7 @@ public class Camisa extends JFrame{
 	
 	private JFrame tela = new JFrame();
 	
-	private JLabel lbmat = new JLabel("MATRÕCULA");
+	private JLabel lbmat = new JLabel("MATR√çCULA");
 	private JLabel lbtamanho = new JLabel("TAMANHO DA CAMISA");
 	private JLabel lbcor = new JLabel("SELECIONE A COR DA CAMISA:");
 	private JLabel lbcorSelecionada = new JLabel();
@@ -64,7 +66,7 @@ public class Camisa extends JFrame{
 		
 		tela.getContentPane().add(lbtamanho);
 		lbtamanho.setBounds(45,150,250,30);
-	    lbtamanho.setFont(new Font("Tahoma", 1, 12));
+	    	lbtamanho.setFont(new Font("Tahoma", 1, 12));
 	    
 		tela.getContentPane().add(lbcor);
 		lbcor.setBounds(45,240,250,30);
@@ -85,6 +87,7 @@ public class Camisa extends JFrame{
 		
 		tela.getContentPane().add(btsolicitar);
 		btsolicitar.setFont(new Font("Tahoma", 1, 18));
+		
 		combo.setBounds(200,140,50,30);
 		combo.addItem(null);
 		combo.addItem("P");
@@ -106,6 +109,12 @@ public class Camisa extends JFrame{
 		
 		tela.getContentPane().add(labelVermelho);
 		labelVermelho.setBounds(85,315,60,27);
+		
+		this.evento(labelAzul);
+		this.evento(labelBranco);
+		this.evento(labelAmarelo);
+		this.evento(labelVermelho);
+		this.evento(labelVerde);
 	}
 		//manipulacao das labels das cores
 		public void evento(JLabel label) {
@@ -116,7 +125,7 @@ public class Camisa extends JFrame{
 				
 				JLabel label = (JLabel) e.getSource();
 	               if(label != lbcorSelecionada){
-	            	   label.setBorder(new MatteBorder(1, 1, 3, 3, Color.BLACK));
+	            	   label.setBorder(new MatteBorder(1, 1, 3, 3, Color.black));
 	               }
 			}
 			@Override
@@ -149,29 +158,46 @@ public class Camisa extends JFrame{
 			}
 		});
     
-	/*btsolicitar.addActionListener(new ActionListener() {
-		
-		public void actionPerformed(ActionEvent confirmar) {
-			
-		}
-	});
-	*/
-	/*EM CONSTRU«√O*/
+		btsolicitar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent solicitar) {
+				try {
+					matricula = Integer.parseInt(txtmatricula.getText());
+					quantidade = Integer.parseInt(txtquantidade.getText());
+
+					if (corCamisa == null || combo.getSelectedItem() == null) {
+						JOptionPane.showMessageDialog(null, "Prencha todos os campos!");
+					} else {
+						if (combo.getSelectedItem() != null) {
+							tamanho = (String) combo.getSelectedItem();
+						}
+						
+					}
+				} catch (Exception ex) {
+					if (txtmatricula.getText() == null) {
+					}
+					JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+				}
+				
+				//Salvar no TXT 
+				/*EM CONSTRU√á√ÉO*/
+				
+				/*Path caminho = Paths.get("C:\\Users\\Vanessa\\Desktop");
+				String arquivo = (String) txtquantidade.getText();
+				byte[] arquivoEmByte = arquivo.getBytes();
+				
+				try {
+					Files.write(caminho, arquivoEmByte);
+					
+				} catch(Exception erro) {
+					
+				}*/
+				
+			}
+		});
+	
 	}
 	public static void main(String[] args) {
-		
-		
-		/*Salvar no TXT
-		 * Path caminho = Paths.get("C:\\Users\\Vanessa\\Desktop");
-		String arquivo = "";
-		byte[] arquivoEmByte = arquivo.getBytes();
-		
-		try {
-			Files.write(arquivo, arquivoEmByte);
-			
-		} catch(Exception erro) {
-			
-		}*/
 		
 		Camisa escolha = new Camisa();
 
