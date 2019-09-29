@@ -6,7 +6,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -43,7 +46,7 @@ public class Camisa extends JFrame{
 	private JButton btsolicitar = new JButton("ENVIAR");
 	
 	private String corCamisa;
-	private int matricula;
+	private String matricula;
 	private int quantidade;
 	private String tamanho;
 	
@@ -66,7 +69,7 @@ public class Camisa extends JFrame{
 		
 		tela.getContentPane().add(lbtamanho);
 		lbtamanho.setBounds(45,150,250,30);
-	    	lbtamanho.setFont(new Font("Tahoma", 1, 12));
+	    lbtamanho.setFont(new Font("Tahoma", 1, 12));
 	    
 		tela.getContentPane().add(lbcor);
 		lbcor.setBounds(45,240,250,30);
@@ -157,46 +160,71 @@ public class Camisa extends JFrame{
 				}
 			}
 		});
-    
+    	
 		btsolicitar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent solicitar) {
 				try {
-					matricula = Integer.parseInt(txtmatricula.getText());
+					matricula = txtmatricula.getText();
 					quantidade = Integer.parseInt(txtquantidade.getText());
-
-					if (corCamisa == null || combo.getSelectedItem() == null) {
+					
+					if(corCamisa == null || combo.getSelectedItem() == null) {
 						JOptionPane.showMessageDialog(null, "Prencha todos os campos!");
-					} else {
-						if (combo.getSelectedItem() != null) {
+						
+					}else if(quantidade == 0){ //quantidade não pode ser zero
+						JOptionPane.showMessageDialog(null, "Quantidade não pode ser zero!");
+						
+					}else if(matricula.equals("0")){ //matricula nao pode ser zero
+						JOptionPane.showMessageDialog(null, "Erro na Matrícula!");
+						
+					}else {
+						if(combo.getSelectedItem() != null) {
 							tamanho = (String) combo.getSelectedItem();
 						}
-						
 					}
-				} catch (Exception ex) {
-					if (txtmatricula.getText() == null) {
+				}catch(NumberFormatException ex) {
+					if(matricula.equals("0")){
+						JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
 					}
-					JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+					if(quantidade == 0) {
+						JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+					}
+					 
 				}
 				
-				//Salvar no TXT 
-				/*EM CONSTRUÇÃO*/
+				if(quantidade != 0 && !matricula.equals("00000000") &&  combo.getSelectedItem() != null && corCamisa != null) {
+					JOptionPane.showMessageDialog(null, "Solicitação feita com sucesso!");
+				}
 				
-				/*Path caminho = Paths.get("C:\\Users\\Vanessa\\Desktop");
-				String arquivo = (String) txtquantidade.getText();
-				byte[] arquivoEmByte = arquivo.getBytes();
-				
-				try {
-					Files.write(caminho, arquivoEmByte);
-					
-				} catch(Exception erro) {
-					
-				}*/
-				
+				//for para escrever uma linha para cada pedido
+				for(int i=0; i<quantidade; i++) {
+					String texto = matricula+":"+tamanho+":"+corCamisa;
+
+					try {
+						salvar(texto); 
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+				System.exit(0);
 			}
 		});
-	
+		
 	}
+	
+	//Salvar no .txt	
+		public void salvar(String texto) throws IOException {
+			
+			String usuario = System.getProperty("user.home");
+			FileWriter arquivo = new FileWriter(usuario+"\\Desktop\\Camisas.txt", true);
+			PrintWriter gravarArquivo = new PrintWriter(arquivo); 
+
+			gravarArquivo.println(texto); //gravando o texto
+			
+			arquivo.close(); //fechando o arquivo
+			gravarArquivo.close();	
+		}
+		
 	public static void main(String[] args) {
 		
 		Camisa escolha = new Camisa();
