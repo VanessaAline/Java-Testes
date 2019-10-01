@@ -14,21 +14,26 @@ import javax.swing.ImageIcon;
 
 public class Usuario extends JFrame{
 
-	//frame\\
+	//Frame\\
 	JFrame tela = new JFrame("Cadastro de Pessoas");
-	//botoes\\
+	
+	//Botoes\\
 	JButton botao1 = new JButton("Confirmar");
 	JButton botao2 = new JButton("Cancelar");
-	//comboBox\\
+	
+	//ComboBox\\
 	JComboBox selecaoSalario = new JComboBox();
+	
 	//JRadio\\
 	JRadioButton m = new JRadioButton("MASCULINO");
 	JRadioButton f = new JRadioButton("FEMININO");
+	
 	//Textfield\\
 	JTextField tfnome = new JTextField();
 	JTextField tffone = new JTextField();
 	JTextField tfemail = new JTextField();
 	JTextField tfcpf = new JTextField();
+	
 	//Labels\\
 	JLabel lbNome = new JLabel("NOME: ");
 	JLabel lbCpf = new JLabel("CPF: ");
@@ -49,38 +54,39 @@ public class Usuario extends JFrame{
 		tela.setResizable(false);
 		tela.setDefaultCloseOperation(EXIT_ON_CLOSE); 
 		
+		//Adcionando e Setando Posiçoes dos Componentes\\
 		tela.getContentPane().add(label); 
 		label.setBounds(20, 30, 132, 138);
 				
 		tela.getContentPane().add(inicio);
-		inicio.setFont(new Font("Tahoma", Font.BOLD,16)); //alterando a fonte 
+		inicio.setFont(new Font("Tahoma", Font.BOLD,16)); 
 		inicio.setBounds(170, 95, 180, 20);
 		
-		tela.getContentPane().add(lbNome); //label NOME
+		tela.getContentPane().add(lbNome);
 		lbNome.setBounds(15, 165, 50, 50);
-		tela.getContentPane().add(tfnome);  //textfield NOME
+		tela.getContentPane().add(tfnome);  
 		tfnome.setBounds(15, 200, 325, 20);
 		
-		tela.getContentPane().add(lbCpf);  //label CPF
+		tela.getContentPane().add(lbCpf);  
 		lbCpf.setBounds(15, 215, 50, 50);
-		tela.getContentPane().add(tfcpf);  //textfield CPF
+		tela.getContentPane().add(tfcpf);  
 		tfcpf.setBounds(15, 250, 130, 20);
 		
-		tela.getContentPane().add(lbSexo);  //label SEXO
+		tela.getContentPane().add(lbSexo);  
 		lbSexo.setBounds(15, 330, 110, 18);
-		tela.getContentPane().add(m);  //RadioButton MASCULINO
+		tela.getContentPane().add(m);   
 		m.setBounds(100, 330, 110, 18);
-		tela.getContentPane().add(f);  //RadioButton FEMININO
+		tela.getContentPane().add(f);  
 		f.setBounds(220, 330, 110, 18);
 
-		tela.getContentPane().add(lbFone);  //label TELEFONE
+		tela.getContentPane().add(lbFone);   
 		lbFone.setBounds(200, 215, 70, 50);
-		tela.getContentPane().add(tffone);  //textfield TELEFONE
+		tela.getContentPane().add(tffone);  
 		tffone.setBounds(200, 250, 140, 20);
 		
-		tela.getContentPane().add(lbEmail);  //label E-MAIL
+		tela.getContentPane().add(lbEmail); 
 		lbEmail.setBounds(15, 265, 50, 50);
-		tela.getContentPane().add(tfemail);  //textfield E-MAIL
+		tela.getContentPane().add(tfemail);  
 		tfemail.setBounds(15, 300, 325, 20);
 		
 		tela.getContentPane().add(sal);
@@ -91,10 +97,10 @@ public class Usuario extends JFrame{
 		selecaoSalario.addItem("3 a 5 Salários");
 		selecaoSalario.addItem("Acima de 5 Salários");
 		
-		tela.getContentPane().add(botao1);  // botao confirmar 
+		tela.getContentPane().add(botao1);  
 		botao1.setBounds(80, 420, 110, 18);
 		
-		tela.getContentPane().add(botao2);  // botao cancelar 
+		tela.getContentPane().add(botao2);  
 		botao2.setBounds(200, 420, 110, 18);
 		
 		botao1.addActionListener(new ActionListener() {
